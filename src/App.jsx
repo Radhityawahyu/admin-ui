@@ -1,66 +1,109 @@
-const products = [
-  {
-    name: 'Starter Plan',
-    description: 'A simple plan for trying out the essential features.',
-    status: 'Active',
-  },
-  {
-    name: 'Professional Plan',
-    description: 'Everything you need to run a growing project.',
-    status: 'Active',
-  },
-  {
-    name: 'Business Plan',
-    description: 'Advanced tools for teams that need more control.',
-    status: 'Active',
-  },
-  {
-    name: 'Enterprise Plan',
-    description: 'Flexible solutions designed for larger organizations.',
-    status: 'Active',
-  },
-  {
-    name: 'Custom Plan',
-    description: 'Build a plan around the needs of your organization.',
-    status: 'Active',
-  },
-]
-
-function ProductCard({ name, description, status }) {
+function GoogleIcon() {
   return (
-    <article className="flex min-h-56 flex-col justify-between rounded-lg bg-white p-6 shadow-md transition-shadow hover:shadow-xl">
-      <div className="flex items-center justify-between gap-4">
-        <h2 className="text-xl font-bold text-gray-800">{name}</h2>
-        <span className="text-sm font-semibold text-green-500">{status}</span>
-      </div>
-
-      <p className="py-6 text-gray-800">{description}</p>
-
-      <div className="flex justify-end gap-2">
-        <button
-          className="rounded bg-gray-200 px-4 py-2 font-medium text-gray-800 transition-colors hover:bg-gray-300 active:bg-gray-400"
-          type="button"
-        >
-          Cancel
-        </button>
-        <button
-          className="rounded bg-blue-500 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-600 active:bg-blue-700"
-          type="button"
-        >
-          Buy
-        </button>
-      </div>
-    </article>
+    <svg
+      aria-hidden="true"
+      className="h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M21.805 12.23c0-.79-.07-1.55-.2-2.28H12v4.31h5.5a4.7 4.7 0 0 1-2.04 3.08v2.55h3.3c1.93-1.78 3.05-4.4 3.05-7.66Z"
+        fill="#4285F4"
+      />
+      <path
+        d="M12 22c2.76 0 5.08-.92 6.77-2.5l-3.3-2.55c-.92.62-2.1.99-3.47.99-2.67 0-4.93-1.8-5.74-4.22H2.85v2.63A10.22 10.22 0 0 0 12 22Z"
+        fill="#34A853"
+      />
+      <path
+        d="M6.26 13.72A6.14 6.14 0 0 1 5.94 12c0-.6.11-1.18.32-1.72V7.65H2.85A10.22 10.22 0 0 0 1.78 12c0 1.65.4 3.2 1.07 4.35l3.41-2.63Z"
+        fill="#FBBC05"
+      />
+      <path
+        d="M12 6.06c1.5 0 2.85.52 3.91 1.54l2.93-2.93C17.08 2.99 14.76 2 12 2a10.22 10.22 0 0 0-9.15 5.65l3.41 2.63C7.07 7.86 9.33 6.06 12 6.06Z"
+        fill="#EA4335"
+      />
+    </svg>
   )
 }
 
 function App() {
   return (
-    <main className="min-h-screen bg-gray-100 p-6">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {products.map((product) => (
-          <ProductCard key={product.name} {...product} />
-        ))}
+    <main className="flex min-h-screen items-center justify-center bg-page px-6 py-10">
+      <div className="w-full max-w-sm">
+        <div className="mb-8 flex justify-center font-poppins text-4xl tracking-wide text-primary-500">
+          <span className="font-bold">FINE</span>
+          <span>bank</span>
+          <span className="font-bold">.IO</span>
+        </div>
+
+        <form className="space-y-5">
+          <div>
+            <label className="mb-2 block text-sm text-neutral-600" htmlFor="email">
+              Email address
+            </label>
+            <input
+              className="w-full rounded-md border border-neutral-400 bg-page px-3 py-2 text-sm text-ink focus:border-ink focus:outline-none focus:ring-0"
+              id="email"
+              name="email"
+              placeholder="hello@example.com"
+              type="email"
+              autoComplete="email"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="mb-2 block text-sm text-neutral-600" htmlFor="password">
+              Password
+            </label>
+            <input
+              className="w-full rounded-md border border-neutral-400 bg-page px-3 py-2 text-sm text-ink focus:border-ink focus:outline-none focus:ring-0"
+              id="password"
+              name="password"
+              placeholder="************"
+              type="password"
+              autoComplete="current-password"
+              required
+            />
+          </div>
+
+          <label className="flex items-center gap-2 text-sm text-neutral-600" htmlFor="remember">
+            <input
+              className="h-4 w-4 accent-primary-500"
+              id="remember"
+              name="remember"
+              type="checkbox"
+            />
+            Keep me signed in
+          </label>
+
+          <button
+            className="w-full rounded-md bg-primary-500 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-600 active:bg-primary-700"
+            type="submit"
+          >
+            Login
+          </button>
+        </form>
+
+        <div className="relative my-7 flex items-center justify-center text-xs text-neutral-500">
+          <div className="w-full border-t border-neutral-300" />
+          <span className="absolute bg-page px-3">or sign in with</span>
+        </div>
+
+        <button
+          className="flex w-full items-center justify-center gap-2 rounded-md bg-secondary-200 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-secondary-300 active:bg-secondary-400"
+          type="button"
+        >
+          <GoogleIcon />
+          Continue with Google
+        </button>
+
+        <div className="mt-7 flex justify-center">
+          <a className="text-sm font-bold text-primary-500 hover:text-primary-600" href="#create-account">
+            Create an account
+          </a>
+        </div>
       </div>
     </main>
   )

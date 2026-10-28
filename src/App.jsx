@@ -1,3 +1,13 @@
+function Logo() {
+  return (
+    <div className="mb-8 flex justify-center font-poppins text-4xl tracking-wide text-primary-500">
+      <span className="font-bold">FINE</span>
+      <span>bank</span>
+      <span className="font-bold">.IO</span>
+    </div>
+  )
+}
+
 function GoogleIcon() {
   return (
     <svg
@@ -27,83 +37,109 @@ function GoogleIcon() {
   )
 }
 
+function FormField({ id, label, type, placeholder, autoComplete }) {
+  return (
+    <div>
+      <label className="mb-2 block text-sm text-neutral-600" htmlFor={id}>
+        {label}
+      </label>
+      <input
+        className="w-full rounded-md border border-neutral-400 bg-page px-3 py-2 text-sm text-ink focus:border-ink focus:outline-none focus:ring-0"
+        id={id}
+        name={id}
+        placeholder={placeholder}
+        type={type}
+        autoComplete={autoComplete}
+        required
+      />
+    </div>
+  )
+}
+
+const fields = [
+  {
+    id: 'email',
+    label: 'Email address',
+    type: 'email',
+    placeholder: 'hello@example.com',
+    autoComplete: 'email',
+  },
+  {
+    id: 'password',
+    label: 'Password',
+    type: 'password',
+    placeholder: '************',
+    autoComplete: 'current-password',
+  },
+]
+
+function LoginForm() {
+  return (
+    <form className="space-y-5">
+      {fields.map((field) => (
+        <FormField key={field.id} {...field} />
+      ))}
+
+      <label className="flex items-center gap-2 text-sm text-neutral-600" htmlFor="remember">
+        <input
+          className="h-4 w-4 accent-primary-500"
+          id="remember"
+          name="remember"
+          type="checkbox"
+        />
+        Keep me signed in
+      </label>
+
+      <button
+        className="w-full rounded-md bg-primary-500 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-600 active:bg-primary-700"
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+  )
+}
+
+function SocialLoginButton() {
+  return (
+    <button
+      className="flex w-full items-center justify-center gap-2 rounded-md bg-secondary-200 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-secondary-300 active:bg-secondary-400"
+      type="button"
+    >
+      <GoogleIcon />
+      Continue with Google
+    </button>
+  )
+}
+
+function SignInDivider() {
+  return (
+    <div className="relative my-7 flex items-center justify-center text-xs text-neutral-500">
+      <div className="w-full border-t border-neutral-300" />
+      <span className="absolute bg-page px-3">or sign in with</span>
+    </div>
+  )
+}
+
+function CreateAccountLink() {
+  return (
+    <div className="mt-7 flex justify-center">
+      <a className="text-sm font-bold text-primary-500 hover:text-primary-600" href="#create-account">
+        Create an account
+      </a>
+    </div>
+  )
+}
+
 function App() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-page px-6 py-10">
       <div className="w-full max-w-sm">
-        <div className="mb-8 flex justify-center font-poppins text-4xl tracking-wide text-primary-500">
-          <span className="font-bold">FINE</span>
-          <span>bank</span>
-          <span className="font-bold">.IO</span>
-        </div>
-
-        <form className="space-y-5">
-          <div>
-            <label className="mb-2 block text-sm text-neutral-600" htmlFor="email">
-              Email address
-            </label>
-            <input
-              className="w-full rounded-md border border-neutral-400 bg-page px-3 py-2 text-sm text-ink focus:border-ink focus:outline-none focus:ring-0"
-              id="email"
-              name="email"
-              placeholder="hello@example.com"
-              type="email"
-              autoComplete="email"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="mb-2 block text-sm text-neutral-600" htmlFor="password">
-              Password
-            </label>
-            <input
-              className="w-full rounded-md border border-neutral-400 bg-page px-3 py-2 text-sm text-ink focus:border-ink focus:outline-none focus:ring-0"
-              id="password"
-              name="password"
-              placeholder="************"
-              type="password"
-              autoComplete="current-password"
-              required
-            />
-          </div>
-
-          <label className="flex items-center gap-2 text-sm text-neutral-600" htmlFor="remember">
-            <input
-              className="h-4 w-4 accent-primary-500"
-              id="remember"
-              name="remember"
-              type="checkbox"
-            />
-            Keep me signed in
-          </label>
-
-          <button
-            className="w-full rounded-md bg-primary-500 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary-600 active:bg-primary-700"
-            type="submit"
-          >
-            Login
-          </button>
-        </form>
-
-        <div className="relative my-7 flex items-center justify-center text-xs text-neutral-500">
-          <div className="w-full border-t border-neutral-300" />
-          <span className="absolute bg-page px-3">or sign in with</span>
-        </div>
-
-        <button
-          className="flex w-full items-center justify-center gap-2 rounded-md bg-secondary-200 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-secondary-300 active:bg-secondary-400"
-          type="button"
-        >
-          <GoogleIcon />
-          Continue with Google
-        </button>
-
-        <div className="mt-7 flex justify-center">
-          <a className="text-sm font-bold text-primary-500 hover:text-primary-600" href="#create-account">
-            Create an account
-          </a>
-        </div>
+        <Logo />
+        <LoginForm />
+        <SignInDivider />
+        <SocialLoginButton />
+        <CreateAccountLink />
       </div>
     </main>
   )
